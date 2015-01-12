@@ -4,17 +4,11 @@
 
 	var d = dataset(options)
 
-### Init
-
-	d.fields <- [fi: {name:, client_default: v, server_default: v, ...}]
-	d.rows <- [ri: row]; row = {values: [fi: val], attr: val, ...}
-	d.fieldmap <- [fieldname1, ...]
-	d.filter <- function(values, ri) -> true|false
+#### Runtime
 
 	d.init()
 
 ### Events
-
 
 	d.on(e, function(e, args...))  see [jQuery.on()](http://api.jquery.com/on/)
 	d.trigger(e, args...)          see [jQuery.trigger()](http://api.jquery.com/trigger/)
@@ -22,20 +16,38 @@
 
 ### Fields
 
+#### Config
+
+	d.fields <- [fi: {name:, client_default: v, server_default: v, ...}]
+	d.fieldmap <- [fieldname1, ...]
+
+#### Runtime
+
 	d.fieldcount() -> n
 	d.field(vfi) -> field
 	d.move_field(svfi, dvfi)
 
 ### Rows
 
+#### Config
+
+	d.rows <- [ri: row]; row = {values: [fi: val], attr: val, ...}
+	d.filter <- function(values, ri) -> true|false
+
+#### Runtime
+
 	d.rowcount() -> n
 	d.row(vri) -> row
 	d.insert(vri) -> added_row
 	d.remove(vri) -> removed_row
 
+#### Config
+
 	d.row_id(vri) -> id
 	d.id_field_name <- name
 	d.id_field_index <- index      (default 0)
+
+	d.new_row() -> row
 
 ### Values
 
