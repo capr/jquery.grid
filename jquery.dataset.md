@@ -1,5 +1,21 @@
 ## Dataset
 
+### Nomenclature
+
+	vfi:      visible field index
+	vri:      visible row index
+	fi:       field index
+	ri:       row index
+	field:    field definition object
+	row:      row object
+	val:      cell value (typed)
+
+   s:        string
+   n:        count of some kind
+	i:        index of some kind
+	v:        value of some kind
+	k:        key in a hash
+
 ### Constructor
 
 #### config
@@ -10,6 +26,10 @@
 
 	var d = dataset(options)
 
+Create a dataset. The options arg can contain any dataset fields and methods,
+which will override any default fields, effectively enabling prototype-based
+inheritance.
+
 ### Events
 
 #### runtime
@@ -17,11 +37,21 @@
 	d.on(e, function(e, args...))  see [jQuery.on()](http://api.jquery.com/on/)
 	d.trigger(e, args...)          see [jQuery.trigger()](http://api.jquery.com/trigger/)
 
+The event system is based on the jQuery events API.
+Refer to that for more details.
+
 ### Fields
 
 #### config
 
-	d.fields <- [fi: {name:, client_default: v, server_default: v, ...}]
+	d.fields <- [fi: field_def]
+
+	field_def: {
+		name:,
+		client_default: v,
+		server_default: v,
+	}
+
 	d.fieldmap <- [fieldname1, ...]
 
 #### runtime
