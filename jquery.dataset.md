@@ -10,11 +10,12 @@
 	row:      row object
 	val:      cell value (typed)
 
-   s:        string
-   n:        count of some kind
+	s:        string
+	n:        count of some kind
 	i:        index of some kind
 	v:        value of some kind
 	k:        key in a hash
+
 
 ### Constructor
 
