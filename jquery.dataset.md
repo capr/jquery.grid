@@ -13,7 +13,6 @@
 	d.on(e, function(e, args...))  see [jQuery.on()](http://api.jquery.com/on/)
 	d.trigger(e, args...)          see [jQuery.trigger()](http://api.jquery.com/trigger/)
 
-
 ### Fields
 
 #### Config
@@ -33,6 +32,7 @@
 
 	d.rows <- [ri: row]; row = {values: [fi: val], attr: val, ...}
 	d.filter <- function(values, ri) -> true|false
+	d.new_row() -> row
 
 #### Runtime
 
@@ -41,15 +41,26 @@
 	d.insert(vri) -> added_row
 	d.remove(vri) -> removed_row
 
+### Row IDs
+
 #### Config
 
-	d.row_id(vri) -> id
 	d.id_field_name <- name
 	d.id_field_index <- index      (default 0)
 
-	d.new_row() -> row
+#### Runtime
+
+	d.row_id(vri) -> id
 
 ### Values
+
+#### Config
+
+	d.converters <- {<type>: function(val, field) -> val}
+	d.validators <- {<type>: function(val, field) -> throw ValidationError(message)}
+	d.ValidationError <- Error subclass
+
+#### Runtime
 
 	d.val(vri, vfi) -> val
 	d.setval(vri, vfi, val) -> converted_val
@@ -57,14 +68,14 @@
 	d.validate(val, field) -> throw ValidationError
 	d.convert(val, field) -> val
 
-	d.converters <- {<type>: function(val, field) -> val}
-	d.validators <- {<type>: function(val, field) -> throw ValidationError(message)}
-	d.ValidationError <- Error subclass
-
 ### Tree
+
+#### Config
 
 	d.parent_id(vri) -> id
 	d.parent_field <- name | index
+
+#### Runtime
 
 	d.expanded(vri) -> true|false
 	d.setexpanded(vri, expanded)
@@ -72,6 +83,8 @@
 	d.expand_all()
 
 ### Changeset
+
+#### Runtime
 
 	d.row_is_new(vri) -> true|false
 	d.row_changed(vri) -> true|false
@@ -84,6 +97,8 @@
 
 ### Remote
 
+#### Config
+
 	d.url_path <- uri                 set to enable remote I/O
 	d.url_args <- [arg1,...]          path components after url_path
 	d.url_params <- {k1=v1,...}       url query params
@@ -92,6 +107,8 @@
 	d.sort_expr() -> 'fieldname:asc|desc,...'
 	d.url() -> url
 	d.ajax([data], [success], [error])
+
+#### Runtime
 
 	d.load([success], [error])
 	d.save([success], [error])
