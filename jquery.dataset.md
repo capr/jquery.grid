@@ -1,32 +1,32 @@
-# Dataset
+## Dataset
 
-## Constructor
+### Constructor
 
 	var d = dataset(options)
 
-## Init
+### Init
 
 	d.fields <- [fi: {name:, client_default: v, server_default: v, ...}]
 	d.rows <- [ri: row]; row = {values: [fi: val], attr: val, ...}
-	d.fieldmap <-
-	d.filter <-
+	d.fieldmap <- [fieldname1, ...]
+	d.filter <- function(values, ri) -> true|false
 
 	d.init()
 
-## Events
+### Events
 
 
 	d.on(e, function(e, args...))  see [jQuery.on()](http://api.jquery.com/on/)
 	d.trigger(e, args...)          see [jQuery.trigger()](http://api.jquery.com/trigger/)
 
 
-## Fields
+### Fields
 
 	d.fieldcount() -> n
 	d.field(vfi) -> field
 	d.move_field(svfi, dvfi)
 
-## Rows
+### Rows
 
 	d.rowcount() -> n
 	d.row(vri) -> row
@@ -37,7 +37,7 @@
 	d.id_field_name <- name
 	d.id_field_index <- index      (default 0)
 
-## Values
+### Values
 
 	d.val(vri, vfi) -> val
 	d.setval(vri, vfi, val) -> converted_val
@@ -49,7 +49,7 @@
 	d.validators <- {<type>: function(val, field) -> throw ValidationError(message)}
 	d.ValidationError <- Error subclass
 
-## Tree
+### Tree
 
 	d.parent_id(vri) -> id
 	d.parent_field <- name | index
@@ -59,7 +59,7 @@
 	d.collapse_all()
 	d.expand_all()
 
-## Changeset
+### Changeset
 
 	d.row_is_new(vri) -> true|false
 	d.row_changed(vri) -> true|false
@@ -70,7 +70,7 @@
 	d.apply_changes()
 	d.cancel_changes()
 
-## Remote
+### Remote
 
 	d.url_path <- uri                 set to enable remote I/O
 	d.url_args <- [arg1,...]          path components after url_path
