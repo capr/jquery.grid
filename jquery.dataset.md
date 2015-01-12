@@ -31,9 +31,9 @@
 
 	var d = dataset(options)
 
-Create a dataset. The options arg can contain any dataset fields and methods,
-which will override any default fields, effectively enabling prototype-based
-inheritance.
+Create a dataset. The options arg can contain any fields and methods,
+and will override the default fields. This can be used for extending,
+overriding, configuration, whatever (i.e. prototype-based inheritance).
 
 ### Events
 
